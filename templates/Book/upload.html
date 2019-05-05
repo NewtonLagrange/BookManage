@@ -1,0 +1,13 @@
+{% extends 'Book/books.html' %}
+
+{% block title %}
+    上传图片
+{% endblock %}
+
+{% block content %}
+    <form class="form-inline my-2 my-lg-0" enctype="multipart/form-data" action="{% url 'Book:upload' %}" method="post">
+        {% csrf_token %}
+      <input class="form-control mr-sm-2" type="file" aria-label="Search" name="img">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">upload</button>
+    </form>
+{% endblock %}

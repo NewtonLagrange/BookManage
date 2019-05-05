@@ -1,0 +1,33 @@
+{% extends 'Book/books.html' %}
+
+{% block title %}
+    编写评论
+{% endblock %}
+
+{% block link %}
+    <script src="/static/tiny_mce/tiny_mce.js"></script>
+    <script type="text/javascript">
+        tinyMCE.init({
+        'mode':'textareas',
+        'theme':'advanced',
+        'width':600,
+        'height':400
+        });
+    </script>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6 p-3">
+                <form action="" method="post">
+                    {% csrf_token %}
+                  <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Comment</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="comment"></textarea>
+                  </div>
+                    <button type="submit" class="btn btn-info">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'Book/books.html' %}
+
+{% block title %}
+搜索
+{% endblock %}
+
+{% block content %}
+{% if books %}
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Book Name</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Exist</th>
+                    <th scope="col">#</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for book in books %}
+                <tr>
+                    <td>{{ book.name }}</td>
+                    <td>{{ book.author}}</td>
+                    <td>{{ book.exist }}</td>
+                    {% if book.exist %}
+                        <td><a href="{% url 'Book:borrow' book.id %}" class="">借阅</a></td>
+                        {% else %}
+                        <td>已借出</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% else %}
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col ">
+                <h2 class="">没有这本书.......</h2>
+            </div>
+        </div>
+    </div>
+
+
+{% endif %}
+{% endblock %}
+
+
+
